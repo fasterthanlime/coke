@@ -1,0 +1,53 @@
+{
+    name: 'sdl',
+    description: 'Simple DirectMedia Layer'
+    version: '1.2',
+
+    source: ['github', 'nddrylliog/ooc-sdl'],
+
+    platforms: [
+      {
+        os: 'linux',
+        distribution: 'ubuntu',
+        arch: '*',
+
+        setup: [
+          ['apt', 'libsdl1.2-dev'],
+        ]
+      },
+
+      {
+        os: 'osx',
+        arch: '*',
+
+        setup: [
+          ['brew', 'sdl']
+        ]
+      },
+
+      {
+        os: 'windows',
+        arch: '*',
+
+        setup: [
+          ['mingw-archive', 'https://github.com/downloads/nddrylliog/sdl-mingw/sdl-mingw-1.2.zip']
+        ]
+      },
+
+      {
+        prio: 20,
+
+        deps: [
+          ['pkgs', 'sdl']
+        ],
+
+        check: [
+          [ 'c', [
+            ['headers', 'SDL/SDL.h'],
+            ['libs', 'SDL']
+          ]
+        ]
+      }
+    }
+}
+
